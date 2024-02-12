@@ -104,4 +104,17 @@ public class StringCalculatorTests
         // answer
         act.Should().Throw<NegativeNotAllowed>(expected);
     }
+
+    [TestCase("2,1001", 2)]
+    public void WhenAddNumbers_ThatBiggerThan1000_ThenShouldIgnoreTheir(string input, int expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // answer
+        result.Should().Be(expected);
+    }
 }
