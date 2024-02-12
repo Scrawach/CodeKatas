@@ -31,8 +31,15 @@ public class StringCalculator
 
     private static IEnumerable<string> CustomSplit(string args)
     {
+        var values = args.Split('\n');
+        var numbers = values[1];
+        
+        var isAnyLengthDelimiter = args[2] == '[';
         var customDelimiter = args[2];
-        var numbers = args.Split('\n')[1];
+
+        if (isAnyLengthDelimiter)
+            return numbers.Split("***", StringSplitOptions.RemoveEmptyEntries);
+        
         return numbers.Split(customDelimiter);
     }
 
