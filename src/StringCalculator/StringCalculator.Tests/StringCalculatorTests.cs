@@ -62,4 +62,18 @@ public class StringCalculatorTests
         // answer
         result.Should().Be(expected);
     }
+
+    [TestCase("1\n2,3", 6)]
+    [TestCase("1\n2,3\n4,5", 15)]
+    public void WhenAddManyNumbers_SeparatedByCommasOrNewline_ThenShouldReturnTheirSum(string input, int expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // answer
+        result.Should().Be(expected);
+    }
 }
