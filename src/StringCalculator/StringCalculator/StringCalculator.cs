@@ -32,13 +32,16 @@ public class StringCalculator
     private static IEnumerable<string> CustomSplit(string args)
     {
         var values = args.Split('\n');
+        var delimiter = values[0];
         var numbers = values[1];
         
         var isAnyLengthDelimiter = args[2] == '[';
         var customDelimiter = args[2];
 
+        var anyLengthDelimiter = delimiter.TrimStart('/').Trim('[').Trim(']');
+
         if (isAnyLengthDelimiter)
-            return numbers.Split("***", StringSplitOptions.RemoveEmptyEntries);
+            return numbers.Split(anyLengthDelimiter, StringSplitOptions.RemoveEmptyEntries);
         
         return numbers.Split(customDelimiter);
     }
