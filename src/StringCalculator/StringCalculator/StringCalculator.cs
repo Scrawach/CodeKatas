@@ -26,7 +26,7 @@ public class StringCalculator
         return ExecuteAdd(numbers);
     }
 
-    private static int ExecuteAdd(int[] numbers) =>
+    private static int ExecuteAdd(IEnumerable<int> numbers) =>
         numbers.Where(n => n < 1000).Sum();
 
     private static IEnumerable<string> CustomSplit(string args)
@@ -39,19 +39,17 @@ public class StringCalculator
 
     private static string[] ParseDelimiter(string args)
     {
-        var values = args.Split('\n');
-        var delimiter = values[0];
-        var isAnyLengthDelimiter = args[2] == '[';
+        var isMultipleDelimiters = args[2] == '[';
+        return isMultipleDelimiters 
+            ? ParseMultipleDelimiters(args.Split('\n')[0]) 
+            : new[] { args[2].ToString() };
+    }
 
-        if (isAnyLengthDelimiter)
-        {
-            var delimiter1 = delimiter.TrimStart('/').Remove(0, 1);
-            var delimiter2 = delimiter1.Remove(delimiter1.Length - 1, 1);
-            var delimiters = delimiter2.Split("][");
-            return delimiters;
-        }
-
-        return new[] { args[2].ToString() };
+    private static string[] ParseMultipleDelimiters(string delimiters)
+    {
+        var withoutFirstParenthesis = delimiters.TrimStart('/').Remove(0, 1);
+        var withoutLastParenthesis = withoutFirstParenthesis.Remove(withoutFirstParenthesis.Length - 1, 1);
+        return withoutLastParenthesis.Split("][");
     }
 
     private static IEnumerable<string> DefaultSplit(string args) =>
