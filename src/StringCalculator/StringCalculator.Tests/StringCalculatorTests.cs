@@ -76,4 +76,19 @@ public class StringCalculatorTests
         // answer
         result.Should().Be(expected);
     }
+
+    [TestCase("//;\n1;2", 3)]
+    [TestCase("//;\n1;2;3", 6)]
+    [TestCase("//;\n1;2;3;4", 10)]
+    public void WhenAddManyNumbers_SeparatedByCustomDelimiters_ThenShouldReturnTheirSum(string input, int expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // answer
+        result.Should().Be(expected);
+    }
 }
