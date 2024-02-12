@@ -7,6 +7,6 @@ public class StringCalculator
             ? 0 
             : Add(args.Split(','));
 
-    public int Add(IEnumerable<string> args) =>
+    private static int Add(IEnumerable<string> args) =>
         args.Select(int.Parse).Sum();
 }

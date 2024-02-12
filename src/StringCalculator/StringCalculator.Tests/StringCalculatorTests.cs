@@ -35,7 +35,7 @@ public class StringCalculatorTests
     [TestCase("1,2", 3)]
     [TestCase("3,4", 7)]
     [TestCase("10,15", 25)]
-    public void WhenAddTwoNumbers_ThenShouldReturnTheirNumber(string input, int expected)
+    public void WhenAddTwoNumbers_SeparatedByCommas_ThenShouldReturnTheirNumber(string input, int expected)
     {
         // arrange
         var calculator = new StringCalculator();
