@@ -131,4 +131,17 @@ public class StringCalculatorTests
         // answer
         result.Should().Be(expected);
     }
+
+    [TestCase("//[*][%]\n1*2%3", 6)]
+    public void WhenAddManyNumbers_WithMultipleCustomDelimiters_ThenShouldReturnTheirSum(string input, int expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // answer
+        result.Should().Be(expected);
+    }
 }
