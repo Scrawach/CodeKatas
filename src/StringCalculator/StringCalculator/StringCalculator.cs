@@ -37,13 +37,21 @@ public class StringCalculator
         return numbers.Split(customDelimiter, StringSplitOptions.RemoveEmptyEntries);
     }
 
-    private static string ParseDelimiter(string args)
+    private static string[] ParseDelimiter(string args)
     {
         var values = args.Split('\n');
         var delimiter = values[0];
         var isAnyLengthDelimiter = args[2] == '[';
-        var anyLengthDelimiter = delimiter.TrimStart('/').Trim('[').Trim(']');
-        return isAnyLengthDelimiter ? anyLengthDelimiter : args[2].ToString();
+
+        if (isAnyLengthDelimiter)
+        {
+            var delimiter1 = delimiter.TrimStart('/').Remove(0, 1);
+            var delimiter2 = delimiter1.Remove(delimiter1.Length - 1, 1);
+            var delimiters = delimiter2.Split("][");
+            return delimiters;
+        }
+
+        return new[] { args[2].ToString() };
     }
 
     private static IEnumerable<string> DefaultSplit(string args) =>
