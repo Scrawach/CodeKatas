@@ -91,4 +91,17 @@ public class StringCalculatorTests
         // answer
         result.Should().Be(expected);
     }
+
+    [TestCase("1,-2,3","-2")]
+    public void WhenAddNegativeNumbers_ThenShouldThrowException_WithThisNumbers(string input, string expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        Action act = () => calculator.Add(input);
+
+        // answer
+        act.Should().Throw<NegativeNotAllowed>(expected);
+    }
 }
