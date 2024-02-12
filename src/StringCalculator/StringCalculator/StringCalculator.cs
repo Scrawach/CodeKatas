@@ -15,8 +15,16 @@ public class StringCalculator
     private static bool HasCustomDelimiter(string args) =>
         args.StartsWith("//");
 
-    private static int ExecuteAdd(IEnumerable<string> args) =>
-        args.Select(int.Parse).Sum();
+    private static int ExecuteAdd(IEnumerable<string> args)
+    {
+        var numbers = args.Select(int.Parse).ToArray();
+        var negativeNumbers = numbers.Where(n => n < 0).ToArray();
+
+        if (negativeNumbers.Any())
+            throw new NegativeNotAllowed(string.Join(",", negativeNumbers));
+        
+        return numbers.Sum();
+    }
 
     private static IEnumerable<string> CustomSplit(string args)
     {
