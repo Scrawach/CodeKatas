@@ -23,7 +23,7 @@ public class StringCalculator
         if (negativeNumbers.Any())
             throw new NegativeNotAllowed(string.Join(",", negativeNumbers));
         
-        return numbers.Sum();
+        return numbers.Where(n => n <= 1000).Sum();
     }
 
     private static IEnumerable<string> CustomSplit(string args)
