@@ -31,4 +31,19 @@ public class StringCalculatorTests
         // answer
         result.Should().Be(expected);
     }
+
+    [TestCase("1,2", 3)]
+    [TestCase("3,4", 7)]
+    [TestCase("10,15", 25)]
+    public void WhenAddTwoNumbers_ThenShouldReturnTheirNumber(string input, int expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // answer
+        result.Should().Be(expected);
+    }
 }
