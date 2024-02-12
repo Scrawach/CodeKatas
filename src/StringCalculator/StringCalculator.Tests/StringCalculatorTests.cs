@@ -35,7 +35,23 @@ public class StringCalculatorTests
     [TestCase("1,2", 3)]
     [TestCase("3,4", 7)]
     [TestCase("10,15", 25)]
-    public void WhenAddTwoNumbers_SeparatedByCommas_ThenShouldReturnTheirNumber(string input, int expected)
+    public void WhenAddTwoNumbers_SeparatedByCommas_ThenShouldReturnTheirSum(string input, int expected)
+    {
+        // arrange
+        var calculator = new StringCalculator();
+
+        // act
+        var result = calculator.Add(input);
+
+        // answer
+        result.Should().Be(expected);
+    }
+
+    [TestCase("1,2,3", 6)]
+    [TestCase("1,2,3,4", 10)]
+    [TestCase("1,2,3,4,5", 15)]
+    [TestCase("1,2,3,4,5,6", 21)]
+    public void WhenAddManyNumbers_SeparatedByCommas_ThenShouldReturnTheirSum(string input, int expected)
     {
         // arrange
         var calculator = new StringCalculator();
