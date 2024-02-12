@@ -119,6 +119,7 @@ public class StringCalculatorTests
     }
 
     [TestCase("//[***]\n1***2***3***", 6)]
+    [TestCase("//[---]\n1---2---3---", 6)]
     public void WhenAddManyNumbers_WithCustomDelimiterAnyLength_ThenShouldReturnTheirSum(string input, int expected)
     {
         // arrange
