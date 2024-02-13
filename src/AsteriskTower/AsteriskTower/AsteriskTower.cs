@@ -2,13 +2,11 @@ namespace AsteriskTower;
 
 public class AsteriskTower
 {
-    public AsteriskTower(int rows)
-    {
-        throw new NotImplementedException();
-    }
+    private readonly int _rows;
 
-    public string[] Build()
-    {
-        throw new NotImplementedException();
-    }
+    public AsteriskTower(int rows) =>
+        _rows = rows;
+
+    public string[] Build() =>
+        Array.Empty<string>();
 }
