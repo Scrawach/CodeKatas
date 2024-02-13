@@ -32,6 +32,8 @@ public class AsteriskTowerTests
 
     [TestCase(2, new[] { " * ", "***"})]
     [TestCase(3, new[] { "  *  ", " *** ", "*****"})]
+    [TestCase(4, new[] { "   *   ", "  ***  ", " ***** ", "*******"})]
+    [TestCase(5, new[] { "    *    ", "   ***   ", "  *****  ", " ******* ", "*********"})]
     public void WhenAsteriskTower_HasFewRows_ThenShouldReturnSymbolsTower(int rows, string[] expected)
     {
         // arrange
