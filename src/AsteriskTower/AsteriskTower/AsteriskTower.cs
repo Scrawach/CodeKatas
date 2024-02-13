@@ -17,17 +17,23 @@ public class AsteriskTower
 
     private static IEnumerable<string> Rows(int amount)
     {
-        var amountOfSpaces = amount - 1;
-        var amountOfSymbols = 1;
+        var spacesWidth = amount - 1;
+        var towerWidth = 1;
         
         for (var i = 0; i < amount; i++)
         {
-            yield return Row(amountOfSpaces, amountOfSymbols);
-            amountOfSpaces--;
-            amountOfSymbols += 2;
+            yield return Row(spacesWidth, towerWidth);
+            spacesWidth--;
+            towerWidth += 2;
         }
     }
 
-    private static string Row(int amountOfSpaces, int amountOfSymbols) =>
-        $"{new string(' ', amountOfSpaces)}{new string('*', amountOfSymbols)}{new string(' ', amountOfSpaces)}";
+    private static string Row(int spacesWidth, int towerWidth) =>
+        $"{Spaces(spacesWidth)}{Tower(towerWidth)}{Spaces(spacesWidth)}";
+
+    private static string Spaces(int width) =>
+        new(' ', width);
+    
+    private static string Tower(int width) =>
+        new('*', width);
 }
