@@ -27,6 +27,6 @@ public class AsteriskTowerTests
         var stringTower = asteriskTower.Build();
 
         // answer
-        stringTower.Should().BeSameAs(new[] { "*"});
+        stringTower.Should().Equal("*");
     }
 }
