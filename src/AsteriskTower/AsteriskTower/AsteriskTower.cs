@@ -8,7 +8,24 @@ public class AsteriskTower
         _rows = rows;
 
     public string[] Build() =>
-        _rows == 1 
-            ? new[] { "*" } 
+        _rows > 0 
+            ? Build(_rows) 
             : Array.Empty<string>();
+
+    private static string[] Build(int rows)
+    {
+        var amountOfSpaces = rows - 1;
+        var amountOfSymbols = 1;
+        var lines = new List<string>();
+
+        for (var i = 0; i < rows; i++)
+        {
+            var line = $"{new string(' ', amountOfSpaces)}{new string('*', amountOfSymbols)}{new string(' ', amountOfSpaces)}";
+            amountOfSpaces--;
+            amountOfSymbols += 2;
+            lines.Add(line);
+        }
+        
+        return lines.ToArray();
+    }
 }
