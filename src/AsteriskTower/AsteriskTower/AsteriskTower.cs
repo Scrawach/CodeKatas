@@ -7,11 +7,8 @@ public class AsteriskTower
     public AsteriskTower(int rows) =>
         _rows = rows;
 
-    public string[] Build()
-    {
-        if (_rows == 1)
-            return new[] { "*" };
-        
-        return Array.Empty<string>();
-    }
+    public string[] Build() =>
+        _rows == 1 
+            ? new[] { "*" } 
+            : Array.Empty<string>();
 }
