@@ -17,14 +17,11 @@ public class AsteriskTower
 
     private static IEnumerable<string> Rows(int amount)
     {
-        var spacesWidth = amount - 1;
-        var towerWidth = 1;
-        
         for (var i = 0; i < amount; i++)
         {
+            var spacesWidth = amount - i - 1;
+            var towerWidth = i * 2 + 1;
             yield return Row(spacesWidth, towerWidth);
-            spacesWidth--;
-            towerWidth += 2;
         }
     }
 
