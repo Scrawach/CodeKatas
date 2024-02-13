@@ -29,4 +29,18 @@ public class AsteriskTowerTests
         // answer
         stringTower.Should().Equal("*");
     }
+
+    [TestCase(2, new[] { " * ", "***"})]
+    [TestCase(3, new[] { "  *  ", " *** ", "*****"})]
+    public void WhenAsteriskTower_HasFewRows_ThenShouldReturnSymbolsTower(int rows, string[] expected)
+    {
+        // arrange
+        var asteriskTower = new AsteriskTower(rows);
+
+        // act
+        var stringTower = asteriskTower.Build();
+
+        // answer
+        stringTower.Should().Equal(expected);
+    }
 }
