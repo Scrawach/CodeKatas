@@ -12,20 +12,22 @@ public class AsteriskTower
             ? Build(_rows) 
             : Array.Empty<string>();
 
-    private static string[] Build(int rows)
-    {
-        var amountOfSpaces = rows - 1;
-        var amountOfSymbols = 1;
-        var lines = new List<string>();
+    private static string[] Build(int rows) =>
+        Rows(rows).ToArray();
 
-        for (var i = 0; i < rows; i++)
+    private static IEnumerable<string> Rows(int amount)
+    {
+        var amountOfSpaces = amount - 1;
+        var amountOfSymbols = 1;
+        
+        for (var i = 0; i < amount; i++)
         {
-            var line = $"{new string(' ', amountOfSpaces)}{new string('*', amountOfSymbols)}{new string(' ', amountOfSpaces)}";
+            yield return Row(amountOfSpaces, amountOfSymbols);
             amountOfSpaces--;
             amountOfSymbols += 2;
-            lines.Add(line);
         }
-        
-        return lines.ToArray();
     }
+
+    private static string Row(int amountOfSpaces, int amountOfSymbols) =>
+        $"{new string(' ', amountOfSpaces)}{new string('*', amountOfSymbols)}{new string(' ', amountOfSpaces)}";
 }
